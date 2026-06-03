@@ -1,0 +1,15 @@
+# Railway / Nixpacks configuration for AI Smart Calendar
+# Railway auto-detects Node.js. This file adds custom build steps.
+
+[phases.setup]
+nixPkgs = ["nodejs", "python3"]
+
+[phases.build]
+cmds = ["npm install"]
+
+[phases.start]
+cmd = "npm start"
+
+[variables]
+NODE_ENV = "production"
+PORT = "3001"
