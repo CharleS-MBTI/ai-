@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "schedule-card": "/components/schedule-card/schedule-card"
+  },
+  "navigationBarTitleText": "AI智能日历"
+}

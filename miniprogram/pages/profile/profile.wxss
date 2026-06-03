@@ -1,0 +1,169 @@
+/* pages/profile/profile.wxss */
+/* 暖金深色主题 */
+
+.profile-header {
+  padding: 48rpx 0 36rpx;
+}
+
+.avatar-section {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 2rpx solid var(--border-active);
+  margin-right: 24rpx;
+  box-shadow: 0 0 20rpx var(--gold-glow);
+}
+
+.nickname {
+  font-size: 34rpx;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8rpx;
+  color: var(--text-primary);
+}
+
+.uid {
+  font-size: 24rpx;
+  color: var(--text-muted);
+}
+
+.login-btn {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: var(--bg-deep);
+  font-size: 30rpx;
+  font-weight: 600;
+  border-radius: var(--radius);
+  padding: 24rpx;
+  text-align: center;
+  border: none;
+  letter-spacing: 0.5rpx;
+}
+
+/* === 数据统计 === */
+.stats-row {
+  display: flex;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1rpx solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32rpx;
+  margin-bottom: 28rpx;
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  letter-spacing: -1rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: var(--text-muted);
+  margin-top: 8rpx;
+}
+
+.stat-divider {
+  width: 2rpx;
+  height: 56rpx;
+  background: var(--border);
+}
+
+/* === 菜单 === */
+.menu-section {
+  margin-bottom: 24rpx;
+}
+
+.menu-title {
+  font-size: 25rpx;
+  color: var(--text-muted);
+  margin-bottom: 12rpx;
+  padding-left: 8rpx;
+  letter-spacing: 0.5rpx;
+}
+
+.menu-list {
+  background: var(--bg-surface);
+  border: 1rpx solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid var(--border);
+  transition: background 0.15s;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:active {
+  background: var(--bg-surface-hover);
+}
+
+.menu-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+  filter: grayscale(0.3);
+}
+
+.menu-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+.menu-arrow {
+  font-size: 28rpx;
+  color: var(--text-dim);
+}
+
+.menu-value {
+  font-size: 26rpx;
+  color: var(--text-muted);
+}
+
+/* === 关于 === */
+.about-section {
+  margin-bottom: 24rpx;
+}
+
+/* === 退出 === */
+.logout-section {
+  padding: 48rpx 0;
+}
+
+.btn-logout {
+  text-align: center;
+  color: var(--danger);
+  font-size: 29rpx;
+  font-weight: 500;
+  padding: 26rpx;
+  background: var(--bg-surface);
+  border: 1rpx solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.btn-logout:active {
+  background: var(--danger-bg);
+}

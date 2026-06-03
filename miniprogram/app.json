@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/add-schedule/add-schedule",
+    "pages/suggestion/suggestion",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#0A0D1A",
+    "navigationBarTitleText": "AI智能日历",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0A0D1A"
+  },
+  "tabBar": {
+    "color": "rgba(240,236,228,0.35)",
+    "selectedColor": "#C8A96E",
+    "backgroundColor": "#111527",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "日历",
+        "iconPath": "images/calendar.png",
+        "selectedIconPath": "images/calendar-active.png"
+      },
+      {
+        "pagePath": "pages/suggestion/suggestion",
+        "text": "AI建议",
+        "iconPath": "images/ai.png",
+        "selectedIconPath": "images/ai-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/profile.png",
+        "selectedIconPath": "images/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

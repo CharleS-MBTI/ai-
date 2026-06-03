@@ -1,0 +1,14 @@
+<!-- components/schedule-card/schedule-card.wxml -->
+<view class="schedule-card" bindtap="onTap">
+  <view class="card-left">
+    <view class="card-time" wx:if="{{schedule.schedule_time}}">{{schedule.schedule_time}}</view>
+    <view class="card-category" style="background: {{schedule.categoryColor}}">
+      {{schedule.categoryIcon}} {{schedule.categoryName}}
+    </view>
+  </view>
+  <view class="card-right">
+    <view class="card-title">{{schedule.title}}</view>
+    <view class="card-content" wx:if="{{schedule.content}}">{{schedule.content}}</view>
+  </view>
+  <view class="card-arrow">›</view>
+</view>

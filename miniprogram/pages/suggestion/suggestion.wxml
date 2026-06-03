@@ -1,0 +1,68 @@
+<!-- pages/suggestion/suggestion.wxml - AI建议列表 -->
+<view class="container">
+  <view class="page-header">
+    <text class="page-title">🤖 AI智能建议</text>
+    <text class="page-subtitle">基于你的日程，AI为你生成的分析和建议</text>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-container" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:elif="{{suggestions.length === 0}}">
+    <text class="icon">🤖</text>
+    <text class="empty-title">还没有AI建议</text>
+    <text class="empty-desc">去日历中添加日程，让AI帮你分析吧</text>
+    <view class="empty-btn" bindtap="goCalendar">去添加日程</view>
+  </view>
+
+  <!-- 建议列表 -->
+  <view class="suggestion-list" wx:else>
+    <view
+      class="suggestion-card"
+      wx:for="{{suggestions}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="viewDetail"
+    >
+      <!-- 卡片头部 -->
+      <view class="card-header">
+        <view class="card-category" style="background: {{item.color}}">
+          <text>{{item.icon}} {{item.categoryName}}</text>
+        </view>
+        <text class="card-date">{{item.created_at}}</text>
+      </view>
+
+      <!-- 日程标题 -->
+      <view class="card-schedule-title">📅 {{item.schedule_title}}</view>
+      <view class="card-schedule-date" wx:if="{{item.schedule_date}}">
+        {{item.schedule_date}}
+      </view>
+
+      <!-- 建议内容预览 -->
+      <view class="card-content-preview">{{item.contentPreview}}</view>
+
+      <!-- 时间规划 -->
+      <view class="card-timeplan" wx:if="{{item.timePlan && item.timePlan.length > 0}}">
+        <view class="tp-title">⏰ 时间规划</view>
+        <view class="tp-item" wx:for="{{item.timePlan}}" wx:key="time" wx:for-item="plan">
+          <text class="tp-time">{{plan.time}}</text>
+          <text class="tp-action">{{plan.action}}</text>
+        </view>
+      </view>
+
+      <!-- 底部箭头 -->
+      <view class="card-footer">
+        <text class="view-more">查看完整建议</text>
+        <text class="card-arrow">›</text>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view class="load-more" wx:if="{{hasMore}}">
+      <text bindtap="loadMore">加载更多</text>
+    </view>
+  </view>
+</view>

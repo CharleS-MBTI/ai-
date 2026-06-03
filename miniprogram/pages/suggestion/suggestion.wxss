@@ -1,0 +1,174 @@
+/* pages/suggestion/suggestion.wxss */
+/* 暖金深色主题 */
+
+.page-header {
+  padding: 16rpx 0 28rpx;
+}
+
+.page-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10rpx;
+  color: var(--text-primary);
+  letter-spacing: 0.5rpx;
+}
+
+.page-subtitle {
+  font-size: 25rpx;
+  color: var(--text-muted);
+}
+
+/* === 建议卡片 === */
+.suggestion-card {
+  background: var(--bg-surface);
+  border: 1rpx solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 顶部金色装饰线 */
+.suggestion-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20rpx;
+  right: 20rpx;
+  height: 2rpx;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+
+.suggestion-card:active {
+  background: var(--bg-surface-hover);
+  border-color: var(--border-active);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+.card-category {
+  font-size: 22rpx;
+  color: var(--gold);
+  padding: 5rpx 16rpx;
+  border-radius: 24rpx;
+  font-weight: 500;
+  background: var(--gold-glow);
+  border: 1rpx solid var(--border-active);
+}
+
+.card-date {
+  font-size: 22rpx;
+  color: var(--text-muted);
+}
+
+.card-schedule-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+  color: var(--text-primary);
+}
+
+.card-schedule-date {
+  font-size: 24rpx;
+  color: var(--text-muted);
+  margin-bottom: 18rpx;
+}
+
+.card-content-preview {
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* === 时间规划 === */
+.card-timeplan {
+  margin-top: 18rpx;
+  background: var(--bg-surface-raised);
+  border: 1rpx solid var(--border);
+  border-radius: var(--radius);
+  padding: 18rpx;
+}
+
+.tp-title {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-bottom: 12rpx;
+}
+
+.tp-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
+  font-size: 24rpx;
+}
+
+.tp-time {
+  color: var(--gold);
+  font-weight: 600;
+  margin-right: 14rpx;
+  min-width: 160rpx;
+  font-size: 23rpx;
+}
+
+.tp-action {
+  color: var(--text-secondary);
+}
+
+/* === 卡片底部 === */
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 18rpx;
+  padding-top: 18rpx;
+  border-top: 1rpx solid var(--border);
+}
+
+.view-more {
+  font-size: 25rpx;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.card-arrow {
+  font-size: 26rpx;
+  color: var(--gold);
+  margin-left: 4rpx;
+}
+
+/* === 空状态按钮 === */
+.empty-btn {
+  margin-top: 24rpx;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: var(--bg-deep);
+  padding: 22rpx 48rpx;
+  border-radius: var(--radius);
+  font-size: 28rpx;
+  font-weight: 600;
+  letter-spacing: 0.5rpx;
+}
+
+/* === 加载更多 === */
+.load-more {
+  text-align: center;
+  padding: 28rpx;
+  color: var(--gold);
+  font-size: 26rpx;
+  font-weight: 500;
+}

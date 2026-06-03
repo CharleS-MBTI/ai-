@@ -1,0 +1,100 @@
+<!-- pages/index/index.wxml - 日历首页 -->
+<view class="container">
+  <!-- 顶部月份选择器 -->
+  <view class="month-header">
+    <view class="month-nav" bindtap="prevMonth">
+      <text class="arrow">◀</text>
+    </view>
+    <view class="month-title">{{currentYear}}年{{currentMonth}}月</view>
+    <view class="month-nav" bindtap="nextMonth">
+      <text class="arrow">▶</text>
+    </view>
+    <view class="today-btn" bindtap="goToday">今天</view>
+  </view>
+
+  <!-- 星期头 -->
+  <view class="week-header">
+    <text class="week-day" wx:for="{{weekDays}}" wx:key="*this">{{item}}</text>
+  </view>
+
+  <!-- 日历网格 -->
+  <view class="calendar-grid">
+    <view
+      class="day-cell {{item.isCurrentMonth ? '' : 'other-month'}} {{item.isToday ? 'today' : ''}} {{item.isSelected ? 'selected' : ''}}"
+      wx:for="{{calendarDays}}"
+      wx:key="dateStr"
+      data-date="{{item.dateStr}}"
+      bindtap="selectDate"
+    >
+      <text class="day-num">{{item.day}}</text>
+      <view class="day-dot" wx:if="{{item.hasSchedule}}"></view>
+    </view>
+  </view>
+
+  <!-- 选中日期的日程列表 -->
+  <view class="schedule-section">
+    <view class="section-header">
+      <text class="section-title">{{selectedDateText}} 日程</text>
+      <view class="add-btn" bindtap="addSchedule">
+        <text class="add-icon">+</text>
+      </view>
+    </view>
+
+    <!-- 加载中 -->
+    <view class="loading-container" wx:if="{{loading}}">
+      <text>加载中...</text>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:elif="{{schedules.length === 0}}">
+      <text class="icon">✦</text>
+      <text class="empty-title">这一天还没有安排</text>
+      <text class="sub-text">轻触右上角，添加你的第一个日程</text>
+    </view>
+
+    <!-- 日程列表 -->
+    <schedule-card
+      wx:for="{{schedules}}"
+      wx:key="id"
+      schedule="{{item}}"
+      bind:select="viewSchedule"
+    />
+  </view>
+</view>
+
+<!-- 日程详情弹窗 -->
+<view class="modal-mask" wx:if="{{showDetail}}" bindtap="closeDetail"></view>
+<view class="detail-modal {{showDetail ? 'show' : ''}}">
+  <view class="detail-header">
+    <text class="detail-title">{{detailSchedule.title}}</text>
+    <text class="detail-close" bindtap="closeDetail">✕</text>
+  </view>
+  <view class="detail-body">
+    <view class="detail-meta">
+      <text class="detail-date">📅 {{detailSchedule.schedule_date}} {{detailSchedule.schedule_time}}</text>
+      <text class="detail-category" wx:if="{{detailSchedule.category}}">
+        {{detailSchedule.categoryName}} {{detailSchedule.categoryIcon}}
+      </text>
+    </view>
+    <view class="detail-content" wx:if="{{detailSchedule.content}}">{{detailSchedule.content}}</view>
+
+    <!-- AI建议区域 -->
+    <view class="ai-section" wx:if="{{detailSchedule.suggestion}}">
+      <view class="ai-header">
+        <text class="ai-title">🤖 AI智能建议</text>
+      </view>
+      <view class="ai-content">{{detailSchedule.suggestion.content}}</view>
+    </view>
+
+    <!-- 生成AI建议按钮 -->
+    <view class="ai-section" wx:else>
+      <view class="ai-generate-btn" bindtap="generateAI">
+        <text>🤖 生成AI建议</text>
+      </view>
+    </view>
+  </view>
+  <view class="detail-footer">
+    <view class="btn-edit" bindtap="editSchedule">编辑</view>
+    <view class="btn-del" bindtap="deleteSchedule">删除</view>
+  </view>
+</view>

@@ -1,0 +1,71 @@
+<!-- pages/add-schedule/add-schedule.wxml - 添加/编辑日程 -->
+<view class="container">
+  <!-- 标题 -->
+  <view class="page-title">{{isEdit ? '编辑日程' : '添加日程'}}</view>
+
+  <!-- 标题输入 -->
+  <view class="form-group">
+    <view class="form-label">日程标题 <text class="required">*</text></view>
+    <input
+      class="form-input"
+      placeholder="例如：明天出差去杭州"
+      value="{{title}}"
+      bindinput="onTitleInput"
+      maxlength="50"
+    />
+  </view>
+
+  <!-- 日期选择 -->
+  <view class="form-group">
+    <view class="form-label">日期 <text class="required">*</text></view>
+    <picker mode="date" value="{{scheduleDate}}" bindchange="onDateChange">
+      <view class="form-picker">
+        <text class="{{scheduleDate ? '' : 'placeholder'}}">{{scheduleDate || '请选择日期'}}</text>
+        <text class="picker-arrow">📅</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 时间选择 -->
+  <view class="form-group">
+    <view class="form-label">时间</view>
+    <picker mode="time" value="{{scheduleTime}}" bindchange="onTimeChange">
+      <view class="form-picker">
+        <text class="{{scheduleTime ? '' : 'placeholder'}}">{{scheduleTime || '请选择时间（可选）'}}</text>
+        <text class="picker-arrow">⏰</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 详细内容 -->
+  <view class="form-group">
+    <view class="form-label">详细内容</view>
+    <textarea
+      class="form-textarea"
+      placeholder="描述一下你的日程安排，越详细AI建议越精准哦~&#10;&#10;例如：后天去杭州出差3天，主要跟合作方洽谈项目，住西湖区附近酒店，有半天自由活动时间。"
+      value="{{content}}"
+      bindinput="onContentInput"
+      maxlength="500"
+      auto-height
+    />
+    <view class="char-count">{{content.length}}/500</view>
+  </view>
+
+  <!-- 智能提示示例 -->
+  <view class="tips-section">
+    <view class="tips-title">💡 试试这些场景</view>
+    <view class="tip-item" wx:for="{{examples}}" wx:key="*this" bindtap="useExample" data-text="{{item}}">
+      <text>{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-section">
+    <view class="btn-submit {{canSubmit ? '' : 'disabled'}}" bindtap="submitSchedule">
+      {{isEdit ? '更新日程并重新生成AI建议' : '创建日程并生成AI建议'}}
+    </view>
+    <view class="btn-save" bindtap="saveOnly">
+      {{isEdit ? '仅更新日程' : '仅保存日程'}}
+    </view>
+  </view>
+</view>
